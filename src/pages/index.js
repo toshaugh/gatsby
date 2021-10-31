@@ -4,13 +4,10 @@ import '../styles/index.css';
 
 function Index() {
   const [date, setDate] = useState(null);
-  useEffect(() => {
-    async function getDate() {
-      const res = await fetch('/api/date');
-      const newDate = await res.text();
-      setDate(newDate);
-    }
-    getDate();
+  useEffect(async () => {
+    const res = await fetch('/api/date');
+    const newDate = await res.text();
+    setDate(newDate);
   }, []);
   return (
     <main>
@@ -47,7 +44,7 @@ function Index() {
         .
       </p>
       <br />
-      <h2>The date according to Node.js (TypeScript) is:</h2>
+      <h2>The date according to Node.js (TypeScript, async direct) is:</h2>
       <p>{date ? date : 'Loading date...'}</p>
     </main>
   );
